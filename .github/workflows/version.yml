@@ -1,0 +1,21 @@
+name: Update version
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Update version
+        run: |
+          VERSION=$(date +'%Y.%m.%d')
+          sed -i "s/version: .*/version: $VERSION/g" app.yaml
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Automatically update version to $VERSION"
