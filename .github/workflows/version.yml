@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Update version
         run: |
           npm version patch -no-git-tag-version
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Update version to ${{ steps.update-version.outputs.version }}
+          commit_message: ${{ steps.commit_message_step.outputs.commit_message }}
