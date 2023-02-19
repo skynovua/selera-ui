@@ -17,4 +17,4 @@ jobs:
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: ${{ steps.commit_message_step.outputs.commit_message }}
+          commit_message: Update version
